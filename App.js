@@ -12,13 +12,26 @@ import {
   Platform,
   Dimensions,
 } from "react-native";
+import {
+  useDimensions,
+  useDeviceOrientation,
+} from "@react-native-community/hooks";
 
 export default function App() {
   const handlePress = () => console.log("tExt pressed");
 
+  const { landscape } = useDeviceOrientation();
+
   console.log(Dimensions.get("screen"));
+  console.log(useDimensions(), useDeviceOrientation());
   return (
     <SafeAreaView style={styles.container}>
+      <View
+        style={{
+          backgroundColor: "red",
+          height: landscape ? "100%" : "30%",
+        }}
+      ></View>
       <Text numberOfLines={1} onPress={handlePress}>
         Hello World
       </Text>
@@ -49,6 +62,26 @@ export default function App() {
           Alert.prompt("My title ", "My msg", (text) => console.log(text))
         }
       ></Button>
+
+      <View
+        style={{
+          backgroundColor: "green",
+          flex: 1,
+        }}
+      >
+        <View
+          style={{
+            backgroundColor: "dodgerblue",
+            flex: 1,
+          }}
+        ></View>
+        <View
+          style={{
+            backgroundColor: "tomato",
+            flex: 1,
+          }}
+        ></View>
+      </View>
     </SafeAreaView>
   );
 }
