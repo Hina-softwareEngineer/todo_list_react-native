@@ -27,7 +27,7 @@ export default function App() {
   };
 
   const addItem = (item) => {
-    if (!text) {
+    if (!item) {
       Alert.alert("Error", "Please enter an item", {
         text: "Ok",
       });
