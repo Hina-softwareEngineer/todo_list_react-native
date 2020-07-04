@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, FlatList, StyleSheet, Alert, StatusBar } from "react-native";
+import {
+  View,
+  FlatList,
+  StyleSheet,
+  Alert,
+  StatusBar,
+  AsyncStorage,
+} from "react-native";
 import Header from "./components/Header";
 import ListItem from "./components/ListItem";
 import AddItem from "./components/AddItem";
@@ -15,7 +22,32 @@ const fetchFonts = () => {
   });
 };
 
+const STORAGE_KEY = "@items";
+
 export default function App() {
+  // retrieveItems = async () => {
+  //   try {
+  //     const items = await AsyncStorage.getItem(STORAGE_KEY);
+
+  //     if (items != null) {
+  //       setItems(items);
+  //       console.log("successfully saved")
+  //     }
+  //   }
+  //   catch (e) {
+  //     Alert("Failed to Fetch Items.");
+  //   }
+  // }
+
+  // save = async name => {
+  //   try {
+  //     await AsyncStorage.setItem(STORAGE_KEY, name);
+  //     console.log("saved");
+  //     setItems(name);
+  //   }
+  //   catch (e) { console.log("failed to save.")}
+  // }
+
   const [items, setItems] = useState([
     {
       id:
